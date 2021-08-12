@@ -1,0 +1,62 @@
+import 'package:bmi_calculator/constants.dart';
+import 'package:flutter/material.dart';
+import '../constants.dart';
+import '../components/reusable_card.dart';
+import '../components/bottom_botton.dart';
+
+class ResultsPage extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title:Text('BMI CALCULATOR'),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          Expanded(
+              child: Container(
+                padding: EdgeInsets.all(15.0),
+                alignment: Alignment.bottomLeft,
+          child: Text(
+              'あなたの結果は…',
+            style: kTitleTextStyle,
+          ),
+      ),
+          ),
+          Expanded(
+              flex: 5,
+          child: ReusableCard(
+              colour: kActiveCardColour,
+            cardChild: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                'Normal',
+                style: kresultTextStyle,
+              ),
+                Text(
+                  '18.3',
+                    style:kBMITextStyle,
+                ),
+                Text(
+                  'BMIは低めのようです。もう少し食べてみてくださいね！',
+                  textAlign: TextAlign.center,
+                  style: kBodyTextStyle,
+                ),
+              ],
+            ),
+          ),
+          ),
+          BottomButton(buttonTitle: 'もう一度計算する',onTap: (){
+            Navigator.pop(context);
+          },
+          ),
+        ],
+      ),
+    );
+  }
+}
